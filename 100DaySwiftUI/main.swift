@@ -389,3 +389,291 @@
 //
 //// возвращаю количество уникальных значений в массиве
 //print(doubleFruit.count)
+
+
+
+//  ------------------ day 5 условия ----------------------
+
+//var someCondition = true
+//
+//if  someCondition {
+//    print("Do something")
+//}
+//
+//
+//if  someCondition {
+//    print("Do something")
+//    print("Do something else")
+//    print("Do a third thing")
+//}
+//
+//
+//let score = 85
+//
+//if score >= 70 {
+//    print("You got an A!")
+//}
+//
+//
+//let speed = 88
+//let percentage = 85
+//let age = 18
+//
+//if speed >= 88 {
+//    print("Where we`re going we don`t need roads.")
+//}
+//
+//
+//if percentage <= 85 {
+//    print("Sorrry, you failed the test.")
+//}
+//
+//if age >= 18 {
+//    print("You`re eligible to vote")
+//}
+//
+//
+//let ourName = "Dave Lister"
+//let friendName = "Arnold Rimmer"
+//
+//if ourName < friendName {
+//    print("It`s \(ourName) vs \(friendName)")
+//}
+//
+//
+//if ourName > friendName {
+//    print("It`s \(friendName) vs \(ourName)")
+//}
+//
+//
+//var numbers = [1, 2, 3]
+//
+//numbers.append(4)
+//
+//if numbers.count > 3 {
+//    numbers.remove(at: 0)
+//}
+//
+//print(numbers)
+//
+//
+//let country = "Canada"
+//
+//if country == "Australia" {
+//    print("G`day")
+//}
+//
+//let name = "Taylor Swift"
+//
+//if name != "Anonymos" {
+//    print("Welcome \(name)")
+//}
+//
+//var username = "taylorSwift13"
+//
+//if username == "" {
+//    username = "Anonymos"
+//}
+//
+//print("Welcome \(username)")
+//
+//
+//
+//if username.isEmpty == true {
+//    username = "Anonymos"
+//}
+//
+//
+//if username.isEmpty  {           // это условие звучит как истинное и тогда ( true ) - необязательно записывать
+//    username = "Anonymos"
+//}
+//
+
+// Как Swift позволяет нам сравнивать различные типы данных?
+
+//let firstName = "Paul"
+//let secondName = "Sophie"
+//
+//let firstAge = 40
+//let secondAge = 10
+//
+//print(firstName == secondName)
+//print(firstName != secondName)
+//print(firstName < secondName)
+//print(firstName >= secondName)
+//
+//
+//print(firstAge == secondAge)
+//print(firstAge != secondAge)
+//print(firstAge < secondAge)
+//print(firstAge >= secondAge)
+//
+//
+//enum Sizes: Comparable {
+//    case small
+//    case medium
+//    case large
+//}
+//
+//let first = Sizes.small
+//let second = Sizes.large
+//print(first < second)
+
+
+
+
+// 2 Как проверить несколько условий
+
+// В чём разница между if и else if
+
+//let age2 = 10
+//
+//if age2 >= 18 {
+//    print("You can vote in the next election.")
+//}
+//
+//if age2 < 18 {
+//    print("Sorry, you`re too young to vote.")
+//}
+//
+//
+//let age3 = 16
+//
+//if age3 >= 18 {
+//    print("You can vote in the next election.")
+//} else {
+//    print("Sorry, you`re too young to vote.")
+//}
+//
+//
+//if someCondition {
+//    print("This will run if the condition is true")
+//} else {
+//    print("This will run if the condition is false")
+//}
+//
+//
+//let a = false
+//let b = true
+//
+//if a {
+//    print("Code to run if a is true")
+//} else if b {
+//    print("Code to run if a is false but b is true")
+//} else {
+//    print("Code to run if both a and b are false")
+//}
+//
+//
+//let temp = 25
+//
+//if temp > 20 {
+//    if temp < 30 {
+//        print("It`s a nice day.")
+//    }
+//}
+//
+//
+//if temp > 20 && temp < 30 {
+//    print("It`s a nice day.")
+//}
+//
+//
+//let userAge = 14
+//let hasParentalConsent = true
+//
+//if userAge >= 18 && hasParentalConsent == true {
+//    print("You can buy the game")
+//}
+//
+//
+//enum TransportOption {
+//    case airplane, helicopter, bicycle, car, scooter
+//}
+//
+//let transport: TransportOption = .airplane
+//
+//
+//if transport == .airplane || transport == .helicopter {
+//    print("Let`s fly!")
+//} else if transport == .bicycle {
+//    print("I hope there`s a bike path...")
+//} else if transport == .car {
+//    print("Time to get stuck in traffic.")
+//} else {
+//    print("I`m going to hire a scooter now!")
+//}
+//
+//
+//// В чём разница между if и else if
+//
+//let score2 = 9000
+//
+//if score2 > 9000 {
+//    print("It`s over 9000!")
+//} else if score2 == 9000 {
+//    print("It`s exactly 9000!")
+//} else {
+//    print("It`s not over 9000!")
+//}
+
+
+// Как проверить несколько условий
+
+//var isOwner = true
+//var isAdmin = true
+//var isEditingEnabled = true
+//
+//if isOwner == true || isAdmin == true {
+//    print("You can delete this post")
+//}
+//
+//if isOwner == true && isEditingEnabled || isAdmin == true {
+//    print("You can delete this post")
+//}
+//
+//
+//if true || false {
+//    print("1")
+//}
+
+
+// Как использовать операторы Switch для проверки нескольких условий
+
+//enum Weather {
+//    case sun, rain, wind, snow, unknow
+//}
+//
+//let forecast = Weather.sun
+//
+//switch forecast {
+//    
+//case .sun: print("It`s should be a nice day")
+//case .rain: print("It`s should be a nice day")
+//case .wind: print("It`s should be a nice day")
+//case .snow: print("It`s should be a nice day")
+//case .unknow:  print("It`s should be a nice day")
+//    
+//}
+
+
+// Тернарный оператор
+
+//let age4 = 18
+//
+//let canVote = age4 >= 18 ? "Yes" : "NO"
+//
+//
+//
+//let names = ["Jayne", "Kaylee", "Mal"]
+//let crewCount = names.isEmpty ? "No one" : "\(names.count) people"
+//print(crewCount)
+//
+//
+//enum Theme {
+//    case light, dark
+//}
+//
+//let theme = Theme.dark
+//let background = theme == .dark ? "black" : "white"
+//print(background)
