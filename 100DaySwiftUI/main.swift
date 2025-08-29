@@ -647,13 +647,13 @@
 //let forecast = Weather.sun
 //
 //switch forecast {
-//    
+//
 //case .sun: print("It`s should be a nice day")
 //case .rain: print("It`s should be a nice day")
 //case .wind: print("It`s should be a nice day")
 //case .snow: print("It`s should be a nice day")
 //case .unknow:  print("It`s should be a nice day")
-//    
+//
 //}
 
 
@@ -677,3 +677,132 @@
 //let theme = Theme.dark
 //let background = theme == .dark ? "black" : "white"
 //print(background)
+
+
+
+// ---------------------------------------------- day 6 Loops ------------------------------------
+
+
+//let platforms = ["IOS", "macOS", "tvOS", "watchOS"]
+//
+//for os in platforms {
+//    print("Swift works great on \(os)")
+//}
+//
+//
+//for i in 1...12 {
+//    print("5 x \(i) = \(5 * i)")
+//}
+//
+//var lyric = "Haters gonna"
+//
+//for _ in 1...5 {
+//    lyric += " hate"
+//}
+//
+//print(lyric)
+//
+//// как использовать подчёркивания в Swift циклах
+//
+//let names = ["Sterling", "Cyrill", "Lana", "Ray", "Pam"]
+//
+//for _ in names {
+//    print("[censored] is a secret agent")
+//}
+//
+//
+//
+//// Почему в Swift два оператора диаппазона
+//
+//let fullNames = ["Piper", "Alex", "Suzanne", "Gloria"]
+//
+//print(fullNames[0])
+//
+//print(fullNames[1...3])
+//
+//print(fullNames[1...])
+//
+//
+//// Как использовать цикл While для работы
+//
+//
+//var countdovn = 10
+//
+//while countdovn > 0 {
+//    print("\(countdovn)...")
+//    countdovn -= 1
+//}
+//
+//print("Blast off!")
+//
+//
+//
+//let id = Int.random(in: 1...1000)
+//print(id)
+//
+//let amout = Double.random(in: 1...1000)
+//print(amout)
+//
+//var roll = 0
+//
+//while roll != 20 {
+//    roll = Int.random(in: 1...20)
+//    print("I rolled a \(roll)")
+//}
+//
+//print("Critical hit!")
+//
+//
+//var page : Int = 0
+//
+//while page <= 5 {
+//    page += 1
+//    print(page)
+//}
+//
+//
+//// Как пропускать элементы цикла с помощью break and continue
+//
+//
+//let fileNames = ["me.jpg", "work.txt", "sophie.jpg", "logo.psd"]
+//
+//for filename in fileNames {
+//    if filename.hasSuffix(".jpg") == false {
+//        continue
+//    }
+//    print("Found picture: \(filename)")
+//}
+//
+//
+//// break
+//
+//let number1 = 4
+//let number2 = 14
+//var multiples = [Int]()
+//
+//for i in 1...100_000 {
+//    if i.isMultiple(of: number1) && i.isMultiple(of: number2) {
+//        multiples.append(i)
+//        
+//        if multiples.count == 5 {
+//            break
+//        }
+//    }
+//}
+//print(multiples)
+//
+//
+//// checkpoint 3
+//
+//
+//for number in 1...100 {
+//    if number % 3 == 0 && number % 5 == 0 {
+//        print("FizzBuzz")
+//    } else if number % 3 == 0 {
+//        print("Fizz")
+//    } else if number % 5 == 0 {
+//        print("Buzz")
+//    } else {
+//        print(number)
+//    }
+//}
