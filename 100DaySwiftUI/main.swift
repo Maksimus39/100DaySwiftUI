@@ -783,7 +783,7 @@
 //for i in 1...100_000 {
 //    if i.isMultiple(of: number1) && i.isMultiple(of: number2) {
 //        multiples.append(i)
-//        
+//
 //        if multiples.count == 5 {
 //            break
 //        }
@@ -806,3 +806,136 @@
 //        print(number)
 //    }
 //}
+
+
+
+
+// --------------- day seven --------------------------------------
+
+// Function part one
+
+
+//func showWelcome(){
+//    print("Welkome to my App!")
+//    print("By defult this prints out a conversion")
+//    print("chart from centimeters to inches, but you")
+//    print("can also set a custom range if you want")
+//}
+//
+//showWelcome()
+//
+//
+//let number = 139
+//
+//if number.isMultiple(of: 2) {
+//    print("Even")
+//} else {
+//    print("Odd")
+//}
+//
+//
+//func printTimesTables (number : Int) {
+//    for i in 1...12 {
+//        print("\(i) x \(number) is \(i * number)")
+//    }
+//}
+//
+//printTimesTables(number: 5)
+//
+//
+//func printTimesTables2 (number : Int, end : Int) {
+//    for i in 1...end {
+//        print("\(i) x \(number) is \(i * number)")
+//    }
+//}
+//
+//printTimesTables2(number: 5, end: 20)
+
+
+// Как вернуть значение из функций
+//import Cocoa
+//
+//let root = sqrt(169)     // вычисление квадратного корня используя библиотеку
+//print(root)
+//
+//
+//func rollDice() -> Int {
+//    return Int.random(in: 1...6)
+//}
+//
+//let result = rollDice()
+//print("You rolled a \(result)")
+//
+//
+//func areLettersIdentical(str1: String, str2: String) -> Bool {
+//    str1.sorted() == str2.sorted()                              // если в одну строку то return писать необязательно
+//}
+//
+//let resultStringBool = areLettersIdentical(str1: "max", str2: "min")
+//print(resultStringBool)
+//
+//
+//func pythagoras (a : Double, b : Double) -> Double {
+//    //    let input = a * a + b * b
+//    //    let root = sqrt(input)
+//    //
+//    //    return root
+//    
+//    
+//    sqrt(a * a + b  * b)
+//}
+
+//let c = pythagoras(a: 3, b: 4)
+//print(c)
+
+
+// Как вернуть несколько значений из функций
+
+//func getUser() -> (firstName : String, lastName : String) {
+//    (firstName : "Taylor", lastName : "Swift")
+//}
+//
+//let user = getUser()
+//print("Name: \(user.firstName) \(user.lastName)")  // возврат кортежа из функции
+//
+//
+//func getUser2() -> (firstName : String, lastName : String) {
+//    ("Taylor", "Swift")
+//}
+//
+//let user2 = getUser2()
+//print("Name: \(user2.0) \(user2.1)")  // возврат кортежа из функции короткая запись но испльзовать имена предпочтительнеее
+//
+//
+//func getUser3() -> (firstName : String, lastName : String) {
+//    let firstName : String = "Taylor"
+//    let lastName : String = "Swift"
+//    return (firstName, lastName)
+//}
+//
+//let user3 = getUser3()
+//print("Name \(user3.firstName) \(user3.lastName)")
+//
+//
+//let (firstName, _) = getUser3()
+//print("Name: \(firstName)")     // ещё один способ возврата кортежа без второго елемента
+
+
+// Как настроить метку параметра
+
+//func isUppercase (_ string : String) -> Bool {
+//    string == string.uppercased()
+//}
+//
+//let string = "HELLO, WORLD"
+//let result2 = isUppercase(string)
+//print(result2)
+//
+//
+//func printtamesTables (for number : Int) {
+//    for i in 1...12 {
+//        print("\(number) * \(i) = \(number * i)")
+//    }
+//}
+//
+//printtamesTables(for: 5)
