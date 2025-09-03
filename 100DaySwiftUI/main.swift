@@ -945,11 +945,11 @@
 
 
 
-// --------------- day eight  function part two --------------------------------------
-
-
-// Предоставление значений по умолчанию для параметров
-
+//// --------------- day eight  function part two --------------------------------------
+//
+//
+//// Предоставление значений по умолчанию для параметров
+//
 //func printTablesThemes (for number:Int, end:Int) {
 //    for i in 1...end {
 //        print("\(i) x \(number) = \(i * number)")
@@ -968,23 +968,23 @@
 //
 //printTablesThemesTwo(for: 2)
 //printTablesThemesTwo(for: 2, end: 30)
-
-
-
+//
+//
+//
 //var characters = ["Lana", "Kseniya", "Nastya", "Daria"]
 //
 //print(characters.count)
 //characters.removeAll()
 //print(characters.count)
-
-// Данная запись удалит элементы и сохранит ёмкость
-
+//
+//// Данная запись удалит элементы и сохранит ёмкость
+//
 //characters.removeAll(keepingCapacity: true)
-
-
-// Как обрабатывать ошибки в функциях
-
-
+//
+//
+//// Как обрабатывать ошибки в функциях
+//
+//
 //enum PasswordError: Error {
 //    case short, obvious
 //}
@@ -1008,8 +1008,8 @@
 //}
 //
 //let string = "1234"
-
-
+//
+//
 //do {
 //    let result = try checkPassword(string)
 //    print("Password rating: \(result)")
@@ -1020,4 +1020,39 @@
 //} catch {
 //    print("There was an error")
 //}
-
+//
+//// ------------- самостоятельная работа 4 -----------------------
+//
+//enum SquareRootError: Error {
+//    case outOfBounds
+//    case noRoot
+//}
+//
+//func squareRoot(_ number: Int) throws -> Int {
+//    if number < 1 || number > 10000 {
+//        throw SquareRootError.outOfBounds
+//    }
+//    
+//    for i in 1...100 {
+//        if i * i == number {
+//            return i
+//        }
+//    }
+//    
+//    throw SquareRootError.noRoot
+//}
+//
+//do {
+//    let result1 = try squareRoot(9)
+//    print("Корень из 9: \(result1)")
+//    
+//    let result2 = try squareRoot(25)
+//    print("Корень из 25: \(result2)")
+//    
+//    let result3 = try squareRoot(10000)
+//    print("Корень из 10000: \(result3)")
+//} catch SquareRootError.outOfBounds {
+//    print("Ошибка: число выходит за рамки 1 - 10000")
+//} catch SquareRootError.noRoot {
+//    print("Ошибка: нет корня для этого числа")
+//}
