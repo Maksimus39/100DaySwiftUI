@@ -880,8 +880,8 @@
 //    //    let root = sqrt(input)
 //    //
 //    //    return root
-//    
-//    
+//
+//
 //    sqrt(a * a + b  * b)
 //}
 
@@ -939,3 +939,85 @@
 //}
 //
 //printtamesTables(for: 5)
+
+
+
+
+
+
+// --------------- day eight  function part two --------------------------------------
+
+
+// Предоставление значений по умолчанию для параметров
+
+//func printTablesThemes (for number:Int, end:Int) {
+//    for i in 1...end {
+//        print("\(i) x \(number) = \(i * number)")
+//    }
+//}
+//
+//printTablesThemes(for: 5, end: 20)
+//
+//
+//
+//func printTablesThemesTwo (for number:Int, end:Int = 20) {
+//    for i in 1...end {
+//        print("\(i) x \(number) = \(i * number)")
+//    }
+//}
+//
+//printTablesThemesTwo(for: 2)
+//printTablesThemesTwo(for: 2, end: 30)
+
+
+
+//var characters = ["Lana", "Kseniya", "Nastya", "Daria"]
+//
+//print(characters.count)
+//characters.removeAll()
+//print(characters.count)
+
+// Данная запись удалит элементы и сохранит ёмкость
+
+//characters.removeAll(keepingCapacity: true)
+
+
+// Как обрабатывать ошибки в функциях
+
+
+//enum PasswordError: Error {
+//    case short, obvious
+//}
+//
+//func checkPassword (_ password: String) throws -> String {
+//    if password.count < 5 {
+//        throw PasswordError.short
+//    }
+//    
+//    if password == "12345" {
+//        throw PasswordError.obvious
+//    }
+//    
+//    if password.count < 8 {
+//        return "OK"
+//    } else if password.count < 10 {
+//        return "Good"
+//    } else {
+//        return "Excellent"
+//    }
+//}
+//
+//let string = "1234"
+
+
+//do {
+//    let result = try checkPassword(string)
+//    print("Password rating: \(result)")
+//} catch PasswordError.short {
+//    print("Please use a longer password.")
+//} catch PasswordError.obvious {
+//    print("I have the same combination on my luggage")
+//} catch {
+//    print("There was an error")
+//}
+
