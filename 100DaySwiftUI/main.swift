@@ -993,11 +993,11 @@
 //    if password.count < 5 {
 //        throw PasswordError.short
 //    }
-//    
+//
 //    if password == "12345" {
 //        throw PasswordError.obvious
 //    }
-//    
+//
 //    if password.count < 8 {
 //        return "OK"
 //    } else if password.count < 10 {
@@ -1032,23 +1032,23 @@
 //    if number < 1 || number > 10000 {
 //        throw SquareRootError.outOfBounds
 //    }
-//    
+//
 //    for i in 1...100 {
 //        if i * i == number {
 //            return i
 //        }
 //    }
-//    
+//
 //    throw SquareRootError.noRoot
 //}
 //
 //do {
 //    let result1 = try squareRoot(9)
 //    print("Корень из 9: \(result1)")
-//    
+//
 //    let result2 = try squareRoot(25)
 //    print("Корень из 25: \(result2)")
-//    
+//
 //    let result3 = try squareRoot(10000)
 //    print("Корень из 10000: \(result3)")
 //} catch SquareRootError.outOfBounds {
@@ -1056,3 +1056,156 @@
 //} catch SquareRootError.noRoot {
 //    print("Ошибка: нет корня для этого числа")
 //}
+
+
+
+
+//// ----------------------------------- day 9 clousures ------------------------------------
+//
+//let sayHello = {
+//    print("Hi there!")
+//}
+//
+//sayHello()
+//
+//
+//let sayHello2 = {(name:String) -> String in
+//    "Hi \(name)"
+//}
+//
+//print(sayHello2("Max"))
+//
+//
+//func getUserData (for id: Int) -> String {
+//    if id == 1989 {
+//        return "Taylor Swift"
+//    } else {
+//        return "Anonymous"
+//    }
+//}
+//
+//let data : (Int) -> String = getUserData
+//
+//let user = data(1989)
+//print(user)
+//
+//
+//
+//let team = ["Gloria", "Suzanne", "Piper", "Tiffany", "Tasha"]
+//let sortedTeam = team.sorted()
+//print(sortedTeam)
+//
+//
+//func captainFirstSorted(name1:String, name2:String) -> Bool {
+//    if name1 == "Suzanne" {
+//        return true
+//    } else if name2 == "Suzanne" {
+//        return false
+//    }
+//    return name1 < name2
+//}
+//
+//let res = captainFirstSorted(name1:"Suzanne", name2:"Piper")
+//print(res)
+//
+//
+//let captainFirstTeam = team.sorted(by: captainFirstSorted)
+//print(captainFirstTeam)
+//
+//
+//let captainFirstTeam2 = team.sorted(by: {(name1:String, name2:String) -> Bool in
+//    if name1 == "Suzanne" {
+//        return true
+//    } else if name2 == "Suzanne" {
+//        return false
+//    }
+//    return name1 < name2
+//})
+//
+//print("captainFirstTeam2 -> : \(captainFirstTeam2)")
+//
+//
+//// Как использовать замыкания и сокращённый синтаксис
+//
+//let captainFirstTeam3 = team.sorted{
+//    if $0 == "Suzanne" {
+//        return true
+//    } else if $1 == "Suzanne" {
+//        return false
+//    }
+//    return $0 < $1
+//}
+//
+//print("captainFirstTeam3 -> \(captainFirstTeam3)")
+//
+//
+//
+//let reverseTeam2 = team.sorted {
+//    return $0 < $1
+//}
+//print("reverseTeam2 -> : \(reverseTeam2)")
+//
+//let reverseTeam3 = team.sorted{ $0 < $1 }
+//print("reverseTeam3 -> : \(reverseTeam3)")
+//
+//
+//let tOnly = team.filter { $0.hasPrefix("T") }
+//print("tOnly -> \(tOnly)")
+//
+//let upperCaseTeam = team.map{ $0.uppercased() }
+//print("upperCaseTeam -> : \(upperCaseTeam)")
+//
+//
+//// Как принимать функции в качестве параметра
+//
+//func greetUser(){
+//    print("Hi there!")
+//}
+//
+//greetUser()
+//
+//var greetCopy : () -> Void = greetUser
+//
+//greetCopy()
+//
+//
+//// Пример
+//
+//func makeArray (size:Int, using generator: () -> Int) -> [Int] {
+//    var numbers = [Int]()
+//    
+//    for _ in 0..<size {
+//        let newNumber = generator()
+//        numbers.append(newNumber)
+//    }
+//    return numbers
+//}
+//
+//let rools = makeArray(size: 50) {
+//    Int.random(in: 1...20)
+//}
+//
+//print("rools -> \(rools)")
+//
+//
+//
+//// Пример
+//
+//func doImportantWork(first:()->Void, second:()->Void, third:()->Void){
+//    print("About to start first work")
+//    first()
+//    print("About to start second work")
+//    second()
+//    print("About to start third work")
+//    third()
+//    print("Done!")
+//}
+//
+// doImportantWork {
+//    print("This is the first work")
+//} second: {
+//    print("This is the second work")
+//} third : {
+//    print("This is the third work")
+//}
+//
