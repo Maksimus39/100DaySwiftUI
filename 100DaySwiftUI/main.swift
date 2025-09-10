@@ -1173,7 +1173,7 @@
 //
 //func makeArray (size:Int, using generator: () -> Int) -> [Int] {
 //    var numbers = [Int]()
-//    
+//
 //    for _ in 0..<size {
 //        let newNumber = generator()
 //        numbers.append(newNumber)
@@ -1209,3 +1209,207 @@
 //    print("This is the third work")
 //}
 //
+
+
+// checkPoint 5
+
+//let luckyNumbers = [7,4,38,21,16,15,12,33,31,49]
+//
+//luckyNumbers
+//    .filter{!$0.isMultiple(of: 2)}
+//    .sorted()
+//    .map{"\($0) is a lucky number"}
+//    .forEach{print($0)}
+
+
+
+
+// ----------------------------- day 10 Struct part one -----------------------------------------------------------------------------
+
+// Как создавать собственные структуры
+
+struct Album {
+    let title: String
+    let artist: String
+    let year : Int
+    
+    func printSummary(){
+        print("\(title) \(year) by \(artist)")
+    }
+}
+
+let red = Album(title: "Red", artist: "Taylor Swift", year: 2012)
+let wings = Album(title: "Wings", artist: "BTS", year: 2016)
+
+print(red.title)
+print(wings.artist)
+
+red.printSummary()
+wings.printSummary()
+
+
+
+struct Employee {
+    var name : String
+    var vacationRemaining : Int
+    
+    mutating func takeVacation(days : Int){
+        if vacationRemaining > days {
+            vacationRemaining -= days
+            print("I`m going on vacation")
+            print("Days remaining: \(vacationRemaining)")
+        } else {
+            print("Oops! There ")
+        }
+    }
+}
+
+var archer = Employee(name: "Sterling Archer", vacationRemaining: 14)
+archer.takeVacation(days: 5)
+print("archer.vacationRemaining -> \(archer.vacationRemaining)")
+
+var archer2 = Employee.init(name: "Sterling Archer", vacationRemaining: 14)
+archer2.takeVacation(days: 5)
+print("archer2.vacationRemaining -> \(archer2.vacationRemaining)")
+
+
+
+// В чём разница между структурой и кортежом, да в том что структуру проще использовать например в функциях
+
+struct User {
+    var name : String
+    var age : Int
+    var city : String
+}
+
+
+
+// Пример использования в функции структуры
+
+func authenticate(_ user : User){}
+func showProfile(_ user : User){}
+func signOut(_ user : User){}
+
+// Пример использования в функции кортежа, и разница очевидна
+
+func authenticate2(_ user : (name:String, age:Int, city:String)){}
+func showProfile2(_ user : (name:String, age:Int, city:String)){}
+func signOut2(_ user : (name:String, age:Int, city:String)){}
+
+
+// Как динамически вычислить стоимость недвижимости
+
+// v1.0
+
+struct EmployeeTwo {
+    let name : String
+    var vacationRemaining : Int
+}
+
+var archerTwo = EmployeeTwo(name: "Sterling Archer", vacationRemaining: 14)
+archerTwo.vacationRemaining -= 5
+print("archerTwo.vacationRemaining -> \(archerTwo.vacationRemaining)")
+archerTwo.vacationRemaining -= 3
+print("archerTwo.vacationRemaining -> \(archerTwo.vacationRemaining)")
+
+
+// v2.0
+
+struct EmployeeTwoV2 {
+    let name : String
+    var vacationAllocated : Int = 14
+    var vacantionTacen : Int = 2
+    
+    var vacationRemaining : Int {
+        get {
+            vacationAllocated - vacantionTacen
+        }
+        
+        set {
+            vacationAllocated = vacantionTacen + newValue
+        }
+    }
+}
+
+// тут отработает get
+var result = EmployeeTwoV2(name: "Sterling Archer")
+print("result.vacationRemaining -> \(result.vacationRemaining)")
+
+
+// тут отработает set
+result.vacationRemaining = 10  // Устанавливаем оставшиеся дни = 10
+// Срабатывает setter: vacationAllocated = 2 + 10 = 12
+print("result.vacationRemaining -> \(result.vacationRemaining)")
+
+
+// Как действовать при изменении недвижимости
+
+// v1
+
+struct Game {
+    var score : Int = 0 {
+        didSet {
+            print("Score is now \(score)")
+        }
+    }
+}
+
+var game = Game()
+game.score += 10
+game.score -= 3
+game.score += 1
+
+// v2
+
+struct App {
+    var contacts = [String]() {
+        willSet {
+            print("Current value is : \(contacts)")
+        }
+        
+        didSet {
+            print("There are now \(contacts.count) contacts.")
+            print("Old value vas \(oldValue)")
+        }
+    }
+}
+
+var app = App()
+app.contacts.append("Maksim Minakov")
+app.contacts.append("Larisa Minakova")
+app.contacts.append("Andrey Minakov")
+app.contacts.append("Bogdan Minakov")
+
+
+// Как создать пользовательские инициализаторы
+
+// v1
+
+struct Player {
+    let name : String
+    let number : Int
+    
+    init(name: String, number: Int) {
+        self.name = name
+        self.number = number
+    }
+}
+
+let player = Player(name: "Sterling Archer", number: 7)
+
+// v2
+
+struct EmployeeTwoV3 {
+    var name : String
+    var yearsActive : Int = 0
+}
+
+extension EmployeeTwoV3 {
+    init() {
+        self.name = "Anonymous"
+        print("Creating an anonymous employee..")
+    }
+}
+
+let roslin = EmployeeTwoV3(name: "Roslin")
+let anon = EmployeeTwoV3()
