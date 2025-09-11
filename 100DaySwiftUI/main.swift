@@ -1228,188 +1228,306 @@
 
 // Как создавать собственные структуры
 
-struct Album {
-    let title: String
-    let artist: String
-    let year : Int
-    
-    func printSummary(){
-        print("\(title) \(year) by \(artist)")
-    }
-}
+//struct Album {
+//    let title: String
+//    let artist: String
+//    let year : Int
+//
+//    func printSummary(){
+//        print("\(title) \(year) by \(artist)")
+//    }
+//}
+//
+//let red = Album(title: "Red", artist: "Taylor Swift", year: 2012)
+//let wings = Album(title: "Wings", artist: "BTS", year: 2016)
+//
+//print(red.title)
+//print(wings.artist)
+//
+//red.printSummary()
+//wings.printSummary()
 
-let red = Album(title: "Red", artist: "Taylor Swift", year: 2012)
-let wings = Album(title: "Wings", artist: "BTS", year: 2016)
-
-print(red.title)
-print(wings.artist)
-
-red.printSummary()
-wings.printSummary()
 
 
-
-struct Employee {
-    var name : String
-    var vacationRemaining : Int
-    
-    mutating func takeVacation(days : Int){
-        if vacationRemaining > days {
-            vacationRemaining -= days
-            print("I`m going on vacation")
-            print("Days remaining: \(vacationRemaining)")
-        } else {
-            print("Oops! There ")
-        }
-    }
-}
-
-var archer = Employee(name: "Sterling Archer", vacationRemaining: 14)
-archer.takeVacation(days: 5)
-print("archer.vacationRemaining -> \(archer.vacationRemaining)")
-
-var archer2 = Employee.init(name: "Sterling Archer", vacationRemaining: 14)
-archer2.takeVacation(days: 5)
-print("archer2.vacationRemaining -> \(archer2.vacationRemaining)")
+//struct Employee {
+//    var name : String
+//    var vacationRemaining : Int
+//
+//    mutating func takeVacation(days : Int){
+//        if vacationRemaining > days {
+//            vacationRemaining -= days
+//            print("I`m going on vacation")
+//            print("Days remaining: \(vacationRemaining)")
+//        } else {
+//            print("Oops! There ")
+//        }
+//    }
+//}
+//
+//var archer = Employee(name: "Sterling Archer", vacationRemaining: 14)
+//archer.takeVacation(days: 5)
+//print("archer.vacationRemaining -> \(archer.vacationRemaining)")
+//
+//var archer2 = Employee.init(name: "Sterling Archer", vacationRemaining: 14)
+//archer2.takeVacation(days: 5)
+//print("archer2.vacationRemaining -> \(archer2.vacationRemaining)")
 
 
 
 // В чём разница между структурой и кортежом, да в том что структуру проще использовать например в функциях
 
-struct User {
-    var name : String
-    var age : Int
-    var city : String
-}
+//struct User {
+//    var name : String
+//    var age : Int
+//    var city : String
+//}
 
 
 
 // Пример использования в функции структуры
 
-func authenticate(_ user : User){}
-func showProfile(_ user : User){}
-func signOut(_ user : User){}
+//func authenticate(_ user : User){}
+//func showProfile(_ user : User){}
+//func signOut(_ user : User){}
 
 // Пример использования в функции кортежа, и разница очевидна
 
-func authenticate2(_ user : (name:String, age:Int, city:String)){}
-func showProfile2(_ user : (name:String, age:Int, city:String)){}
-func signOut2(_ user : (name:String, age:Int, city:String)){}
+//func authenticate2(_ user : (name:String, age:Int, city:String)){}
+//func showProfile2(_ user : (name:String, age:Int, city:String)){}
+//func signOut2(_ user : (name:String, age:Int, city:String)){}
 
 
 // Как динамически вычислить стоимость недвижимости
 
 // v1.0
 
-struct EmployeeTwo {
-    let name : String
-    var vacationRemaining : Int
-}
-
-var archerTwo = EmployeeTwo(name: "Sterling Archer", vacationRemaining: 14)
-archerTwo.vacationRemaining -= 5
-print("archerTwo.vacationRemaining -> \(archerTwo.vacationRemaining)")
-archerTwo.vacationRemaining -= 3
-print("archerTwo.vacationRemaining -> \(archerTwo.vacationRemaining)")
+//struct EmployeeTwo {
+//    let name : String
+//    var vacationRemaining : Int
+//}
+//
+//var archerTwo = EmployeeTwo(name: "Sterling Archer", vacationRemaining: 14)
+//archerTwo.vacationRemaining -= 5
+//print("archerTwo.vacationRemaining -> \(archerTwo.vacationRemaining)")
+//archerTwo.vacationRemaining -= 3
+//print("archerTwo.vacationRemaining -> \(archerTwo.vacationRemaining)")
 
 
 // v2.0
 
-struct EmployeeTwoV2 {
-    let name : String
-    var vacationAllocated : Int = 14
-    var vacantionTacen : Int = 2
-    
-    var vacationRemaining : Int {
-        get {
-            vacationAllocated - vacantionTacen
-        }
-        
-        set {
-            vacationAllocated = vacantionTacen + newValue
-        }
-    }
-}
+//struct EmployeeTwoV2 {
+//    let name : String
+//    var vacationAllocated : Int = 14
+//    var vacantionTacen : Int = 2
+//
+//    var vacationRemaining : Int {
+//        get {
+//            vacationAllocated - vacantionTacen
+//        }
+//
+//        set {
+//            vacationAllocated = vacantionTacen + newValue
+//        }
+//    }
+//}
 
 // тут отработает get
-var result = EmployeeTwoV2(name: "Sterling Archer")
-print("result.vacationRemaining -> \(result.vacationRemaining)")
+//var result = EmployeeTwoV2(name: "Sterling Archer")
+//print("result.vacationRemaining -> \(result.vacationRemaining)")
 
 
 // тут отработает set
-result.vacationRemaining = 10  // Устанавливаем оставшиеся дни = 10
+//result.vacationRemaining = 10  // Устанавливаем оставшиеся дни = 10
 // Срабатывает setter: vacationAllocated = 2 + 10 = 12
-print("result.vacationRemaining -> \(result.vacationRemaining)")
+//print("result.vacationRemaining -> \(result.vacationRemaining)")
 
 
 // Как действовать при изменении недвижимости
 
 // v1
 
-struct Game {
-    var score : Int = 0 {
-        didSet {
-            print("Score is now \(score)")
-        }
-    }
-}
-
-var game = Game()
-game.score += 10
-game.score -= 3
-game.score += 1
+//struct Game {
+//    var score : Int = 0 {
+//        didSet {
+//            print("Score is now \(score)")
+//        }
+//    }
+//}
+//
+//var game = Game()
+//game.score += 10
+//game.score -= 3
+//game.score += 1
 
 // v2
 
-struct App {
-    var contacts = [String]() {
-        willSet {
-            print("Current value is : \(contacts)")
-        }
-        
-        didSet {
-            print("There are now \(contacts.count) contacts.")
-            print("Old value vas \(oldValue)")
-        }
-    }
-}
-
-var app = App()
-app.contacts.append("Maksim Minakov")
-app.contacts.append("Larisa Minakova")
-app.contacts.append("Andrey Minakov")
-app.contacts.append("Bogdan Minakov")
+//struct App {
+//    var contacts = [String]() {
+//        willSet {
+//            print("Current value is : \(contacts)")
+//        }
+//
+//        didSet {
+//            print("There are now \(contacts.count) contacts.")
+//            print("Old value vas \(oldValue)")
+//        }
+//    }
+//}
+//
+//var app = App()
+//app.contacts.append("Maksim Minakov")
+//app.contacts.append("Larisa Minakova")
+//app.contacts.append("Andrey Minakov")
+//app.contacts.append("Bogdan Minakov")
 
 
 // Как создать пользовательские инициализаторы
 
 // v1
 
-struct Player {
-    let name : String
-    let number : Int
-    
-    init(name: String, number: Int) {
-        self.name = name
-        self.number = number
-    }
-}
-
-let player = Player(name: "Sterling Archer", number: 7)
+//struct Player {
+//    let name : String
+//    let number : Int
+//
+//    init(name: String, number: Int) {
+//        self.name = name
+//        self.number = number
+//    }
+//}
+//
+//let player = Player(name: "Sterling Archer", number: 7)
 
 // v2
 
-struct EmployeeTwoV3 {
-    var name : String
-    var yearsActive : Int = 0
-}
+//struct EmployeeTwoV3 {
+//    var name : String
+//    var yearsActive : Int = 0
+//}
+//
+//extension EmployeeTwoV3 {
+//    init() {
+//        self.name = "Anonymous"
+//        print("Creating an anonymous employee..")
+//    }
+//}
+//
+//let roslin = EmployeeTwoV3(name: "Roslin")
+//let anon = EmployeeTwoV3()
 
-extension EmployeeTwoV3 {
-    init() {
-        self.name = "Anonymous"
-        print("Creating an anonymous employee..")
-    }
-}
 
-let roslin = EmployeeTwoV3(name: "Roslin")
-let anon = EmployeeTwoV3()
+
+
+// ----------------------------------- day 11 Struct part two ----------------------------------------------------
+
+// Как ограничить доступ к внутренним данным с помощью контроля доступа
+
+//struct BankAccount {
+//    private  var funds = 0
+//    
+//    mutating func deposit(amount:Int){
+//        funds += amount
+//    }
+//    
+//    mutating func withDraw(amount:Int) -> Bool {
+//        if funds >= amount {
+//            funds -= amount
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+//}
+//
+//var account = BankAccount()
+//account.deposit(amount: 100)
+//
+//let success = account.withDraw(amount: 100)
+//
+//if success {
+//    print("Withdref money successfully")
+//} else {
+//    print("Failed to get the money")
+//}
+
+
+// Статические свойства и методы
+
+//struct School {
+//    static var studentCount = 0
+//    
+//    static func add(student:String){
+//        print("\(student) joined the school")
+//        studentCount += 1
+//    }
+//}
+//
+//School.add(student: "Taylor Swift")
+//print("School.studentCount -> \(School.studentCount)")
+
+
+
+// В чём смысл статических свойств и методов
+
+//struct Unwrap {
+//    static let appUrl = "https://chat.deepseek.com/"
+//}
+
+// так не работает даже если создам екземпляр структуры
+//var res = Unwrap()
+//res
+
+// а так работает я работаю напрямую и со структурой и с свойством
+//print(Unwrap.appUrl)
+
+
+//var entropy = Int.random(in: 1...10_000)
+//
+//func getEntropy() -> Int {
+//    entropy += 1
+//    return entropy
+//}
+//
+//print("getEntropy() -> \(getEntropy())")
+
+
+// КПП 6
+
+//struct carInfo {
+//    let model:String
+//    let place:Int
+//    private(set)  var currentTransmission = 4 {
+//        didSet {
+//            print("Переключились на передачу \(currentTransmission)")
+//        }
+//    }
+//    
+//    init(model: String, place: Int) {
+//        self.model = model
+//        self.place = place
+//    }
+//    
+//    mutating func shiftUp(){
+//        if currentTransmission < 10 {
+//            currentTransmission += 1
+//        } else {
+//            print("Невозможно переключиться выше 10 передачи")
+//        }
+//    }
+//    
+//    mutating func shiftDown(){
+//        if currentTransmission > 0{
+//            currentTransmission -= 1
+//        } else {
+//            print("Невозможно переключиться ниже")
+//        }
+//    }
+//}
+//
+//var myCar = carInfo(model: "BMW", place: 2)
+//myCar.shiftUp()
+//myCar.shiftDown()
+
+
+
+
+
