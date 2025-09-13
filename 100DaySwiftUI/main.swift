@@ -1423,11 +1423,11 @@
 
 //struct BankAccount {
 //    private  var funds = 0
-//    
+//
 //    mutating func deposit(amount:Int){
 //        funds += amount
 //    }
-//    
+//
 //    mutating func withDraw(amount:Int) -> Bool {
 //        if funds >= amount {
 //            funds -= amount
@@ -1454,7 +1454,7 @@
 
 //struct School {
 //    static var studentCount = 0
-//    
+//
 //    static func add(student:String){
 //        print("\(student) joined the school")
 //        studentCount += 1
@@ -1500,12 +1500,12 @@
 //            print("Переключились на передачу \(currentTransmission)")
 //        }
 //    }
-//    
+//
 //    init(model: String, place: Int) {
 //        self.model = model
 //        self.place = place
 //    }
-//    
+//
 //    mutating func shiftUp(){
 //        if currentTransmission < 10 {
 //            currentTransmission += 1
@@ -1513,7 +1513,7 @@
 //            print("Невозможно переключиться выше 10 передачи")
 //        }
 //    }
-//    
+//
 //    mutating func shiftDown(){
 //        if currentTransmission > 0{
 //            currentTransmission -= 1
@@ -1531,3 +1531,204 @@
 
 
 
+
+
+//// Day 12 Class ---------------------------------------
+//
+//// Как создавать свои собственные классы
+//
+//class Game {
+//    var score = 0 {
+//        didSet {
+//            print("Score is now \(score)")
+//        }
+//    }
+//}
+//
+//var newGame = Game()
+//newGame.score += 10
+//
+//
+//
+//// Как сделать чтобы один класс наследовал другой
+//
+//class Employee {
+//    let hours : Int
+//    
+//    func printSummary(){
+//        print("I work \(hours) hours a day.")
+//    }
+//    
+//    init(hours: Int) {
+//        self.hours = hours
+//    }
+//}
+//
+//
+//class Developer : Employee {
+//    func work(){
+//        print("I`m writting code for \(hours) hours")
+//    }
+//    
+//    override func printSummary(){
+//        print("I`m a developer who will sometimes work \(hours) hours a day, but other times spend hours arguing about whether code should be indented using tabs or spaces")
+//    }
+//}
+//
+//class Manager : Employee {
+//    func work(){
+//        print("I`m going meetings for \(hours) hours")
+//    }
+//}
+//
+//let robert = Developer(hours: 8)
+//let joseph = Manager(hours: 10)
+//
+//robert.work()
+//joseph.work()
+//
+//let novall = Developer(hours: 8)
+//novall.printSummary()
+//
+//let maksim = Manager(hours: 12)
+//maksim.printSummary()
+//
+//
+//// Как добавить инициализаторы для классов
+//
+//class Vehicle {
+//    let isElectric:Bool
+//    
+//    init(isElectric: Bool) {
+//        self.isElectric = isElectric
+//    }
+//}
+//
+//
+//class Car: Vehicle {
+//    let isConvertible:Bool
+//    
+//    init(isElectric:Bool, isConvertible: Bool) {
+//        self.isConvertible = isConvertible
+//        super.init(isElectric: isElectric)
+//    }
+//}
+//
+//let teslaX = Car(isElectric: true, isConvertible: false)
+//print("teslaX.isElectric -> : \(teslaX.isElectric)")
+//print("teslaX.isConvertible -> : \(teslaX.isConvertible)")
+//
+//
+//// Как копировать классы
+//
+//class User {
+//    var username = "Anonymos"
+//}
+//
+//var user1 = User()
+//var user2 = user1
+//user2.username = "Taylor Swift"
+//
+//print("user1.username == user2.username -> : \(user1.username == user2.username)") // копируются данные у структур другое поведение
+//
+//
+//// Как создать деинициализатор для класса
+//
+//class userTwo {
+//    let id: Int
+//    
+//    init(id: Int) {
+//        self.id = id
+//        print("User \(id): I`m alivel!")
+//    }
+//    
+//    deinit {
+//        print("User \(id): I`m dead")
+//    }
+//}
+//
+//for i in 1...3 {
+//    let user = userTwo(id: i)
+//    print("User \(user.id): I`m in controll")
+//}
+//
+//
+//// Как работать с переменными внутри слассов
+//
+//class Counter {
+//    var res = 1
+//}
+//
+//let result = Counter()
+//result.res = 2
+//print("result.res -> : \(result.res)")
+//
+//
+//
+//class UserTest {
+//    var name = "Maksim"
+//}
+//
+//var max = UserTest()
+//max.name = "Larisa"
+//max = UserTest()
+//print("max.name -> : \(max.name)")
+//
+//
+//// КПП 7
+//
+//class Animal {
+//    let legs: Int
+//    
+//    init(legs: Int) {
+//        self.legs = legs
+//    }
+//}
+//
+//class Dog: Animal {
+//    init() {
+//        super.init(legs: 4)
+//    }
+//    
+//    func speak(){
+//        print("wof")
+//    }
+//}
+//
+//class Cat: Animal {
+//    var istame:Bool
+//    
+//    init(istame:Bool) {
+//        self.istame = istame
+//        super.init(legs: 4)
+//    }
+//    
+//    func speak(){
+//        print("meow")
+//    }
+//}
+//
+//
+//class Corgi: Dog {
+//    override func speak() {
+//        print("Yap yap!")
+//    }
+//}
+//
+//class Poodle:Dog {
+//    override func speak() {
+//        print("Yap yap yap!")
+//    }
+//}
+//
+//class Persian:Cat {
+//    override func speak(){
+//        print("meow persian")
+//    }
+//}
+//
+//class Lion:Cat {
+//    override func speak(){
+//        print("Rrrrrrrr")
+//    }
+//}
