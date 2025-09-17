@@ -1554,11 +1554,11 @@
 //
 //class Employee {
 //    let hours : Int
-//    
+//
 //    func printSummary(){
 //        print("I work \(hours) hours a day.")
 //    }
-//    
+//
 //    init(hours: Int) {
 //        self.hours = hours
 //    }
@@ -1569,7 +1569,7 @@
 //    func work(){
 //        print("I`m writting code for \(hours) hours")
 //    }
-//    
+//
 //    override func printSummary(){
 //        print("I`m a developer who will sometimes work \(hours) hours a day, but other times spend hours arguing about whether code should be indented using tabs or spaces")
 //    }
@@ -1598,7 +1598,7 @@
 //
 //class Vehicle {
 //    let isElectric:Bool
-//    
+//
 //    init(isElectric: Bool) {
 //        self.isElectric = isElectric
 //    }
@@ -1607,7 +1607,7 @@
 //
 //class Car: Vehicle {
 //    let isConvertible:Bool
-//    
+//
 //    init(isElectric:Bool, isConvertible: Bool) {
 //        self.isConvertible = isConvertible
 //        super.init(isElectric: isElectric)
@@ -1636,12 +1636,12 @@
 //
 //class userTwo {
 //    let id: Int
-//    
+//
 //    init(id: Int) {
 //        self.id = id
 //        print("User \(id): I`m alivel!")
 //    }
-//    
+//
 //    deinit {
 //        print("User \(id): I`m dead")
 //    }
@@ -1679,7 +1679,7 @@
 //
 //class Animal {
 //    let legs: Int
-//    
+//
 //    init(legs: Int) {
 //        self.legs = legs
 //    }
@@ -1689,7 +1689,7 @@
 //    init() {
 //        super.init(legs: 4)
 //    }
-//    
+//
 //    func speak(){
 //        print("wof")
 //    }
@@ -1697,12 +1697,12 @@
 //
 //class Cat: Animal {
 //    var istame:Bool
-//    
+//
 //    init(istame:Bool) {
 //        self.istame = istame
 //        super.init(legs: 4)
 //    }
-//    
+//
 //    func speak(){
 //        print("meow")
 //    }
@@ -1732,3 +1732,211 @@
 //        print("Rrrrrrrr")
 //    }
 //}
+
+
+
+
+
+
+// ----- Day 13 Protocol and extension ------------------
+
+// Как создавать и использовать протоколы
+
+protocol Vehicle {
+    func estimateTime(for distance: Int) -> Int
+    func travel(distance: Int)
+}
+
+struct Car: Vehicle {
+    func estimateTime(for distance: Int) -> Int {
+        return distance / 50
+    }
+    
+    func travel(distance: Int) {
+        print("I`m diving \(distance)km")
+    }
+    
+    func openSunroof(){
+        print("It`s a nice day!")
+    }
+}
+
+let car = Car()
+print(car.estimateTime(for: 100))
+
+let car2 = Car()
+car2.travel(distance: 10)
+
+let car3 = Car()
+car3.openSunroof()
+
+
+struct Bicycle:Vehicle {
+    func estimateTime(for distance: Int) -> Int {
+        return distance / 10
+    }
+    
+    func travel(distance: Int) {
+        print("I`m cycling \(distance)km")
+    }
+}
+
+let bike = Bicycle()
+print(bike.estimateTime(for: 30))
+
+let bikeTwo = Bicycle()
+bikeTwo.travel(distance: 10)
+
+
+protocol VehicleTwo {
+    var name: String {get}
+    var currentPassengers: Int {get set}
+    func estimateTime(for distance: Int) -> Int
+    func travel(distance: Int)
+}
+
+
+
+protocol Purchaseable{
+    var name: String {get set}
+}
+
+struct Book:Purchaseable {
+    var name: String
+    var author: String
+}
+
+struct Movie:Purchaseable {
+    var name: String
+    var actors:[String]
+}
+
+struct CarTwo:Purchaseable {
+    var name: String
+    var manufactured: String
+}
+
+struct Coffe:Purchaseable{
+    var name:String
+    var strenght:Int
+}
+
+
+func buy(_ item:Purchaseable){
+    print("I`m buying \(item.name)")
+}
+
+
+// Как использовать неявные типы возвращаемых данных
+
+func getrandomNumber() -> some Equatable {
+    Int.random(in: 1...50)
+}
+
+func getrandomBool() -> some Equatable {
+    Bool.random()
+}
+
+
+print("getrandomNumber() ->", getrandomNumber())
+
+
+print("getrandomNumber() == getrandomNumber() -> ", getrandomNumber() == getrandomNumber())
+
+
+
+// Как создавать и использовать расширение протокола
+
+let quests = ["Mario", "Luigi", "Peach"]
+
+if quests.isEmpty == false {
+    print("Guests count \(quests.count)")
+}
+
+if !quests.isEmpty {
+    print("Guests count \(quests.count)")
+}
+
+
+// Но этот вариант интереснее
+
+extension Array {
+    var isNotEmpty: Bool {
+        isEmpty == false
+    }
+}
+
+if quests.isNotEmpty {
+    print("Guests count \(quests.count)")
+}
+
+
+extension Collection {
+    var isNotEmpty: Bool {
+        isEmpty == false
+    }
+}
+
+
+protocol Person {
+    var name: String { get }
+    func sayHello()
+}
+
+extension Person {
+    func sayHello() {
+        print("Hello, my name is \(name)")
+    }
+}
+
+
+struct Employee: Person {
+    let name: String
+}
+
+let taylor = Employee(name: "Maksim Minakov")
+taylor.sayHello()
+print(taylor.name)
+
+
+
+// КПП 8
+
+protocol HouseInstruction {
+    var roomCount: Int { get set }
+    var cost: Int { get }
+    var nameAgent: String { get set }
+    
+    func saleBuilding()
+}
+
+struct House: HouseInstruction {
+    var roomCount: Int
+    var cost: Int
+    var nameAgent: String
+    
+    func saleBuilding() {
+        print("Дом на продажу")
+        print("У нас в доме комнат \(roomCount)")
+        print("Стоимость данного дома составляет \(cost)")
+        print("Имя агента занимающегося продажей \(nameAgent)")
+    }
+}
+
+struct Office: HouseInstruction {
+    var roomCount: Int
+    var cost: Int
+    var nameAgent: String
+    
+    func saleBuilding() {
+        print("Офис в аренду")
+        print("У нас в офисе помещений \(roomCount)")
+        print("Стоимость данного офиса составляет \(cost)")
+        print("Имя агента занимающегося продажей \(nameAgent)")
+    }
+}
+
+var ownerHouse = House(roomCount: 4, cost: 10_000_000, nameAgent: "Виктория Успешная")
+var ownerOffice = Office(roomCount: 10, cost: 50_000_000, nameAgent: "Волк с Уолл - Стрит")
+print("ownerHouse -> \(ownerHouse)")
+print("ownerHouse -> \(ownerOffice)")
