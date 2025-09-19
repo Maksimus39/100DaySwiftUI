@@ -1751,11 +1751,11 @@
 //    func estimateTime(for distance: Int) -> Int {
 //        return distance / 50
 //    }
-//    
+//
 //    func travel(distance: Int) {
 //        print("I`m diving \(distance)km")
 //    }
-//    
+//
 //    func openSunroof(){
 //        print("It`s a nice day!")
 //    }
@@ -1775,7 +1775,7 @@
 //    func estimateTime(for distance: Int) -> Int {
 //        return distance / 10
 //    }
-//    
+//
 //    func travel(distance: Int) {
 //        print("I`m cycling \(distance)km")
 //    }
@@ -1906,7 +1906,7 @@
 //    var roomCount: Int { get set }
 //    var cost: Int { get }
 //    var nameAgent: String { get set }
-//    
+//
 //    func saleBuilding()
 //}
 //
@@ -1914,7 +1914,7 @@
 //    var roomCount: Int
 //    var cost: Int
 //    var nameAgent: String
-//    
+//
 //    func saleBuilding() {
 //        print("Дом на продажу")
 //        print("У нас в доме комнат \(roomCount)")
@@ -1927,7 +1927,7 @@
 //    var roomCount: Int
 //    var cost: Int
 //    var nameAgent: String
-//    
+//
 //    func saleBuilding() {
 //        print("Офис в аренду")
 //        print("У нас в офисе помещений \(roomCount)")
@@ -1945,27 +1945,27 @@
 
 
 
-// --------------- Day 14 Optionals --------------------------------
-
-// Как обрабатывать отсутствующие данные с помощью необязательных параметров
-
+//// --------------- Day 14 Optionals --------------------------------
+//
+//// Как обрабатывать отсутствующие данные с помощью необязательных параметров
+//
 //let opposites = [
 //    "Mario" : "Wario",
 //    "Luigi" : "Waluigi"
 //]
 //
 //let peachOpposite = opposites["Peach"]
-//print("peachOpposite ->", \(peachOpposite)) - это не даст результат т.к в словаре нет такого ключа Peach
-
-// 1й способ развернуть Optionals
-
+////print("peachOpposite ->", \(peachOpposite)) - это не даст результат т.к в словаре нет такого ключа Peach
+//
+//// 1й способ развернуть Optionals
+//
 //if let marioOpposite = opposites["Mario"] {
 //    print("Mario`s opposite is \(marioOpposite)")
 //}
-
-
-// 2й способ с else
-
+//
+//
+//// 2й способ с else
+//
 //var userName: String? = nil
 //
 //if let unwrappedUserName = userName {
@@ -1973,9 +1973,9 @@
 //} else {
 //    print("The optional was empty.")
 //}
-
-// Пример необязательного числового значения в функции и как его развернуть
-
+//
+//// Пример необязательного числового значения в функции и как его развернуть
+//
 //func square(number: Int) -> Int {
 //    return number * number
 //}
@@ -1985,9 +1985,9 @@
 //if let number = number {
 //    print(square(number: number))
 //}
-
-// Почему Swift заставляет нас разворачивать опциональные значения
-
+//
+//// Почему Swift заставляет нас разворачивать опциональные значения
+//
 //func getUsername() -> String? {
 //    "Maksim Aleksandrovich"
 //}
@@ -1997,8 +1997,127 @@
 //} else {
 //    print("No username")
 //}
-
-
-// Как развернуть опционалы с помощью Guard?
-
-
+//
+//
+//// Как развернуть опционалы с помощью Guard?
+//
+//func printSquare(of number: Int?) {
+//    guard let number = number else {
+//        print("Missing input")
+//        return
+//    }
+//    print("\(number) x \(number) is \(number * number)")
+//}
+//
+//// Использование
+//printSquare(of: 5)      // "5 x 5 is 25"
+//printSquare(of: nil)    // "Missing input"
+//
+//
+//
+//// v2
+//
+//var myInt: Int? = 42
+//
+//if let myInt = myInt {
+//    print("myInt ->", myInt)
+//}
+//
+//
+//func processNumber(_ myInt: Int?) {
+//    guard let unwrappedValue = myInt else {
+//        print("Value is nil")
+//        return // выход из функции
+//    }
+//    print("Unwrapped value: \(unwrappedValue)")
+//}
+//
+//processNumber(42)
+//processNumber(nil)
+//
+//
+//// Как развернуть опционал с nill
+//
+//let captains = [
+//    "Enterprise":"Picard",
+//    "Voyager":"Janeway",
+//    "Defiant":"Sisko"
+//]
+//
+//let new = captains["Serenity"] ?? "N/A"
+//print(new)
+//
+//
+//let tvShows = ["Archer", "Babylon - 5", "Ted Lasso"]
+//let favorite = tvShows.randomElement() ?? "None"
+//print(favorite)
+//
+//
+//struct Book {
+//    let title: String
+//    let author: String?
+//}
+//
+//let book = Book(title: "Beowulf", author: nil)
+//let author = book.author ?? "Unknown"
+//print("book, author -> :", book, author)
+//
+//
+//let input = ""
+//let numberTwo = Int(input) ?? 42
+//print(numberTwo)
+//
+//
+//let scores = ["Picard":800, "Data":7000, "Troi":900]
+//let crusherScore = scores["Crusher"] ?? 0
+//print("crusherScore ->", crusherScore)
+//
+//
+//// Как обрабатывать несколько опциональных параметров с помощью объединения опциональных параметров в цепочку
+//
+//let names = ["Arya", "Bran", "Robb", "Sansa"]
+//let chosen = names.randomElement()?.uppercased() ?? "No one"
+//print("Next in line: \(chosen)")
+//
+//
+//struct Book2 {
+//    let title: String
+//    let author: String?
+//}
+//
+//var book2: Book2? = nil
+//let author2 = book2?.author?.first?.uppercased() ?? "A"
+//print("author2 ->", author2)
+//
+//
+//
+//// Почему опциональное связывание так важно
+//
+//let namesAuthor = ["Vincent": "van Gogh", "Leonardo": "da Vinci", "Michelangelo": "Pietra"]
+//let surnameLetter = namesAuthor["Vincent"]?.first?.uppercased() ?? "N/A"
+//print("surnameLetter ->:", surnameLetter)
+//
+//
+//// Как обрабатывать сбои в функции с помощью опциональных значений
+//
+//enum UserError: Error {
+//    case badId
+//    case networkFailed
+//}
+//
+//func getUser(id: Int) throws -> String{
+//    throw UserError.networkFailed
+//}
+//
+//let user = (try? getUser(id: 23)) ?? "Anonymous"
+//print("user ->:", user)
+//
+//
+//// КПП 9
+//
+//func randomArrayInt(number: [Int]?) -> Int? {
+//    number?.randomElement() ?? Int.random(in: 1...100)
+//}
+//
+//
+//print(randomArrayInt(number: [1,3,5,7,9,45,2,6,67,98,23,55,90,123,890,123])!)
